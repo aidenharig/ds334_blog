@@ -1,0 +1,17 @@
+{
+  "hash": "6c011dd819899c11fa28190ad07252aa",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Competing National Priorities: An Analysis of U.S. Defense and Health & Environmental Spending\"\nauthor: \"Aiden W. Harig\"\ndate: \"2026-02-06\"\ncategories: [Financial Analysis, Politics]\n---\n\n\n\n# Preface\n\nIt is well known that the United States allocates an annual defense budget so large that it is difficult for most people to fully conceptualize. The modern world presents very real and dangerous threats that require robust defense--not only to protect the nation itself, but arguably to safeguard vulnerable populations beyond its borders. This reality raises an important question: Is this level of defense spending excessive, or necessary? More specifically, does it disproportionately outweigh federal investment in other critical battles the nation faces, such as those against disease, wellbeing, and environmental degradation?\n\nThis brief analysis examines that question by comparing federal spending across these domains. To do so, it aggregates the budgets of agencies within each respective category, with health and environmental spending intentionally encompassing a broader range of agencies to reflect the diffuse and multifaceted nature of these challenges.\n\n![](/posts/post-with-code/f35.jpg)\n\n# Introduction\n\n\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# Grouping by defense & health services,\n# Combining annual budgets\n\ndefense_health = fed_r_d_spending |>\n  mutate(department = recode(department,\n                              \"DOD\" = \"defense\",\n                              \"DHS\" = \"defense\",\n                              \"HHS\" = \"health\",\n                              \"NIH\" = \"health\",\n                              \"USDA\" = \"health\",\n                              \"EPA\" = \"health\",\n                              \"VA\" = \"health\")) |>\n  filter(department == \"defense\" | department == \"health\") |>\n  group_by(department, year) |>\n  summarise(rd_totalBudget = sum(rd_budget))\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# Graphing defense & health service budgets over time\n\nggplot(data = defense_health, aes(x = year, y = rd_totalBudget, color = department)) +\n  geom_line() +\n  scale_color_viridis_d() +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

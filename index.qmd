@@ -1,5 +1,5 @@
 ---
-title: "ds334_blog"
+title: "Data, Visualized by Aiden Harig"
 listing:
   contents: posts
   sort: "date desc"

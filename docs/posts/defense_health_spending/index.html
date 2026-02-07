@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Harlow Malloc">
-<meta name="dcterms.date" content="2026-01-28">
+<meta name="author" content="Aiden W. Harig">
+<meta name="dcterms.date" content="2026-02-06">
 
-<title>Post With Code – ds334_blog</title>
+<title>Competing National Priorities: An Analysis of U.S. Defense and Health &amp; Environmental Spending – ds334_blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -149,11 +149,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Post With Code</h1>
+      <h1 class="title">Competing National Priorities: An Analysis of U.S. Defense and Health &amp; Environmental Spending</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">news</div>
-                <div class="quarto-category">code</div>
-                <div class="quarto-category">analysis</div>
+                <div class="quarto-category">Financial Analysis</div>
+                <div class="quarto-category">Politics</div>
               </div>
                   </div>
   </div>
@@ -164,14 +163,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Harlow Malloc </p>
+               <p>Aiden W. Harig </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 28, 2026</p>
+        <p class="date">February 6, 2026</p>
       </div>
     </div>
     
@@ -190,15 +189,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>This is a post with executable code.</p>
+<section id="preface" class="level1">
+<h1>Preface</h1>
+<p>It is well known that the United States allocates an annual defense budget so large that it is difficult for most people to fully conceptualize. The modern world presents very real and dangerous threats that require robust defense–not only to protect the nation itself, but arguably to safeguard vulnerable populations beyond its borders. This reality raises an important question: Is this level of defense spending excessive, or necessary? More specifically, does it disproportionately outweigh federal investment in other critical battles the nation faces, such as those against disease, well-being, and environmental degradation?</p>
+<p>This brief analysis examines that question by comparing federal spending across these domains. To do so, it aggregates the budgets of agencies within each respective category, with health and environmental spending intentionally encompassing a broader range of agencies to reflect the diffuse and multifaceted nature of these challenges.</p>
+<p><img src="f35.jpg" class="img-fluid"></p>
+<p><br></p>
+</section>
+<section id="dataset-introduction" class="level1">
+<h1>Dataset Introduction</h1>
+<p>This analysis uses a dataset (<code>fed_r_d_spending</code>) from <strong>TidyTuesday</strong> that compiles historical research and development (R&amp;D) budget data across major U.S. federal agencies. The dataset includes annual R&amp;D spending figures by agency, allowing for longitudinal comparison of federal investment priorities over time.</p>
+<p>The primary variables of interest are <strong>agency</strong> (<code>department</code>)and <strong>R&amp;D budget allocation</strong> (<code>rd_budget</code>). For the purposes of this analysis, agencies are grouped into two constructed categories based on perceived functional roles. The <strong>Defense</strong> category combines the <em>Department of Defense (DOD) and the Department of Homeland Security (DHS)</em>, while the <strong>Health</strong> category combines the <em>Department of Health and Human Services (HHS), National Institutes of Health (NIH), U.S. Department of Agriculture (USDA), Environmental Protection Agency (EPA), and Department of Veterans Affairs (VA)</em>. These groupings are intentionally defined to enable a clearer comparison between military-focused and public well-being-focused federal investments.</p>
+<p>After filtering the dataset to include only these agencies, the final sample consists of <strong>84 observations</strong>, spanning the years <strong>1976 to 2017</strong>.</p>
+<p>The central question of interest is whether—and to what extent—federal defense-related R&amp;D spending outweighs investment in health and environmental services over this period. Rather than evaluating individual agencies in isolation, this analysis focuses on aggregate budget patterns to assess broader federal priority tradeoffs.</p>
+<p>Finally, it is important to note that the agency groupings used in this analysis are constructs rather than formal budget classifications. This framing choice is an effort to examine perceived national priorities, rather than to assess definitive categorizations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Federal Research and Development Spending by Agency: Raw Data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fed_r_d_spending <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Desktop/Data334/data copy/fed_r_d_spending.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(fed_r_d_spending)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grouping by defense &amp; health/environmental services,</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering out other U.S. agencies</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Combining annual budgets</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>defense_health <span class="ot">=</span> fed_r_d_spending <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">department =</span> <span class="fu">recode</span>(department,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"DOD"</span> <span class="ot">=</span> <span class="st">"defense"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"DHS"</span> <span class="ot">=</span> <span class="st">"defense"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"HHS"</span> <span class="ot">=</span> <span class="st">"health"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"NIH"</span> <span class="ot">=</span> <span class="st">"health"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"USDA"</span> <span class="ot">=</span> <span class="st">"health"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"EPA"</span> <span class="ot">=</span> <span class="st">"health"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"VA"</span> <span class="ot">=</span> <span class="st">"health"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(department <span class="sc">==</span> <span class="st">"defense"</span> <span class="sc">|</span> department <span class="sc">==</span> <span class="st">"health"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(department, year) <span class="sc">|&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">rd_totalBudget =</span> <span class="fu">sum</span>(rd_budget))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+</section>
+<section id="the-comparison" class="level1">
+<h1>The Comparison</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Graphing defense &amp; health service budgets over time</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> defense_health, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> rd_totalBudget, <span class="at">color =</span> department)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Federal R&amp;D Spending Across Time"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total R&amp;D Budget"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">"bold"</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="fl">1.2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
+</div>
+<p>This figure compares total federal R&amp;D spending on defense and health-related agencies from 1976 to 2017. Defense R&amp;D spending remains higher than health spending throughout most of the period, though it exhibits greater volatility, with pronounced peaks in the late 1980s and late 2000s followed by sharp declines. In contrast, health R&amp;D spending shows a steadier upward trend, particularly from the mid-1980s through the early 2000s, narrowing the gap between the two categories. By the end of the time series, the difference in R&amp;D investment between defense and health is smaller than in earlier decades, suggesting a relative shift toward more balanced federal R&amp;D priorities.</p>
+<p>The key takeaway is that although defense R&amp;D spending consistently exceeds health R&amp;D spending, it fluctuates far more dramatically, experiencing sharp increases and declines across decades. Health R&amp;D spending, by contrast, follows a steadier growth trajectory and gradually closes the gap, particularly after the early 2000s. Overall, the figure shows that differences between the two categories are driven not only by spending levels, but by contrasting patterns of volatility and long-term investment stability. This makes sense as health and well-being is an on-going priority, while defense capeabilities tends to spike in <strong>response</strong> to conflict.</p>
+<p><br></p>
+</section>
+<section id="wrap-up-class-connection" class="level1">
+<h1>Wrap-Up &amp; Class Connection</h1>
+<p>This analysis shows how a simple frequency plot can be an effective way to visualize quantitative data over time, making long-term trends, and variability clear. While the visualization highlights meaningful differences between defense and health R&amp;D spending, the approach has limitations, including the use of constructed agency groupings and aggregate nominal budgets that do not account for inflation or changes in agency scope. With additional data or time, future work could adjust for inflation, disaggregate agencies, or incorporate alternative visualizations to provide deeper context. Overall, this example reinforces a key concept from class: even simple visualizations, when well matched to the data, can clearly and effectively communicate complex patterns.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

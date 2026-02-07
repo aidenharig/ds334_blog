@@ -1,0 +1,87 @@
+---
+title: "Competing National Priorities: An Analysis of U.S. Defense and Health & Environmental Spending"
+author: "Aiden W. Harig"
+date: "2026-02-06"
+categories: [Financial Analysis, Politics]
+---
+
+# Preface
+
+It is well known that the United States allocates an annual defense budget so large that it is difficult for most people to fully conceptualize. The modern world presents very real and dangerous threats that require robust defense--not only to protect the nation itself, but arguably to safeguard vulnerable populations beyond its borders. This reality raises an important question: Is this level of defense spending excessive, or necessary? More specifically, does it disproportionately outweigh federal investment in other critical battles the nation faces, such as those against disease, well-being, and environmental degradation?
+
+This brief analysis examines that question by comparing federal spending across these domains. To do so, it aggregates the budgets of agencies within each respective category, with health and environmental spending intentionally encompassing a broader range of agencies to reflect the diffuse and multifaceted nature of these challenges.
+
+![](f35.jpg)
+
+<br>
+
+# Dataset Introduction
+
+This analysis uses a dataset (`fed_r_d_spending`) from **TidyTuesday** that compiles historical research and development (R&D) budget data across major U.S. federal agencies. The dataset includes annual R&D spending figures by agency, allowing for longitudinal comparison of federal investment priorities over time.
+
+The primary variables of interest are **agency** (`department`)and **R&D budget allocation** (`rd_budget`). For the purposes of this analysis, agencies are grouped into two constructed categories based on perceived functional roles. The **Defense** category combines the *Department of Defense (DOD) and the Department of Homeland Security (DHS)*, while the **Health** category combines the *Department of Health and Human Services (HHS), National Institutes of Health (NIH), U.S. Department of Agriculture (USDA), Environmental Protection Agency (EPA), and Department of Veterans Affairs (VA)*. These groupings are intentionally defined to enable a clearer comparison between military-focused and public well-being-focused federal investments.
+
+After filtering the dataset to include only these agencies, the final sample consists of **84 observations**, spanning the years **1976 to 2017**.
+
+The central question of interest is whether—and to what extent—federal defense-related R&D spending outweighs investment in health and environmental services over this period. Rather than evaluating individual agencies in isolation, this analysis focuses on aggregate budget patterns to assess broader federal priority tradeoffs.
+
+Finally, it is important to note that the agency groupings used in this analysis are constructs rather than formal budget classifications. This framing choice is an effort to examine perceived national priorities, rather than to assess definitive categorizations.
+
+```{r}
+#| warning: false
+# Federal Research and Development Spending by Agency: Raw Data
+library(tidyverse)
+library(readr)
+fed_r_d_spending <- read_csv("~/Desktop/Data334/data copy/fed_r_d_spending.csv")
+View(fed_r_d_spending)
+```
+
+```{r}
+#| warning: false
+# Grouping by defense & health/environmental services,
+# Filtering out other U.S. agencies
+# Combining annual budgets
+
+defense_health = fed_r_d_spending |>
+  mutate(department = recode(department,
+                              "DOD" = "defense",
+                              "DHS" = "defense",
+                              "HHS" = "health",
+                              "NIH" = "health",
+                              "USDA" = "health",
+                              "EPA" = "health",
+                              "VA" = "health")) |>
+  filter(department == "defense" | department == "health") |>
+  group_by(department, year) |>
+  summarise(rd_totalBudget = sum(rd_budget))
+```
+
+<br>
+
+# The Comparison
+
+```{r}
+#| warning: false
+# Graphing defense & health service budgets over time
+
+ggplot(data = defense_health, aes(x = year, y = rd_totalBudget, color = department)) +
+  geom_line(linewidth = 2) +
+  scale_color_viridis_d() +
+  theme_minimal() +
+  labs(
+    title = "Federal R&D Spending Across Time",
+    y = "Total R&D Budget",
+    x = "Year") +
+  theme(plot.title = element_text(size = 15, face = "bold", 
+                                  hjust = 0.5, vjust = 1.2))
+```
+
+This figure compares total federal R&D spending on defense and health-related agencies from 1976 to 2017. Defense R&D spending remains higher than health spending throughout most of the period, though it exhibits greater volatility, with pronounced peaks in the late 1980s and late 2000s followed by sharp declines. In contrast, health R&D spending shows a steadier upward trend, particularly from the mid-1980s through the early 2000s, narrowing the gap between the two categories. By the end of the time series, the difference in R&D investment between defense and health is smaller than in earlier decades, suggesting a relative shift toward more balanced federal R&D priorities.
+
+The key takeaway is that although defense R&D spending consistently exceeds health R&D spending, it fluctuates far more dramatically, experiencing sharp increases and declines across decades. Health R&D spending, by contrast, follows a steadier growth trajectory and gradually closes the gap, particularly after the early 2000s. Overall, the figure shows that differences between the two categories are driven not only by spending levels, but by contrasting patterns of volatility and long-term investment stability. This makes sense as health and well-being is an on-going priority, while defense capeabilities tends to spike in **response** to conflict.
+
+<br>
+
+# Wrap-Up & Class Connection
+
+This analysis shows how a simple frequency plot can be an effective way to visualize quantitative data over time, making long-term trends, and variability clear. While the visualization highlights meaningful differences between defense and health R&D spending, the approach has limitations, including the use of constructed agency groupings and aggregate nominal budgets that do not account for inflation or changes in agency scope. With additional data or time, future work could adjust for inflation, disaggregate agencies, or incorporate alternative visualizations to provide deeper context. Overall, this example reinforces a key concept from class: even simple visualizations, when well matched to the data, can clearly and effectively communicate complex patterns.
