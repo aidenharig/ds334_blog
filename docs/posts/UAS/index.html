@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Aiden W. Harig">
+<meta name="dcterms.date" content="2026-03-16">
+
+<title>Unseen Threats in U.S. Airspace: Visualizing Unauthorized Drone Encounters – ds334_blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ds334_blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Unseen Threats in U.S. Airspace: Visualizing Unauthorized Drone Encounters</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Defense Tech</div>
+                <div class="quarto-category">Airspace Saftey</div>
+                <div class="quarto-category">Counter-UAS</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aiden W. Harig </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 16, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#dataset-introduction" id="toc-dataset-introduction" class="nav-link" data-scroll-target="#dataset-introduction">Dataset Introduction</a></li>
+  <li><a href="#the-surge-uas-sightings-over-time" id="toc-the-surge-uas-sightings-over-time" class="nav-link" data-scroll-target="#the-surge-uas-sightings-over-time">The Surge: UAS Sightings Over Time</a></li>
+  <li><a href="#close-calls-encounter-proximity-over-time" id="toc-close-calls-encounter-proximity-over-time" class="nav-link" data-scroll-target="#close-calls-encounter-proximity-over-time">Close Calls: Encounter Proximity Over Time</a></li>
+  <li><a href="#where-it-happens-a-national-view" id="toc-where-it-happens-a-national-view" class="nav-link" data-scroll-target="#where-it-happens-a-national-view">Where It Happens: A National View</a></li>
+  <li><a href="#zooming-in-california-and-florida" id="toc-zooming-in-california-and-florida" class="nav-link" data-scroll-target="#zooming-in-california-and-florida">Zooming In: California and Florida</a></li>
+  <li><a href="#wrap-up-considerations-course-connection" id="toc-wrap-up-considerations-course-connection" class="nav-link" data-scroll-target="#wrap-up-considerations-course-connection">Wrap-Up, Considerations, &amp; Course Connection</a>
+  <ul class="collapse">
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions">Future Directions</a></li>
+  <li><a href="#connecting-the-visualizations-to-course-concepts" id="toc-connecting-the-visualizations-to-course-concepts" class="nav-link" data-scroll-target="#connecting-the-visualizations-to-course-concepts">Connecting the Visualizations to Course Concepts</a></li>
+  </ul></li>
+  <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations">Citations</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="preface" class="level1">
+<h1>Preface</h1>
+<p>In the summer of 2018, over 300 unauthorized drone sightings were reported to the FAA in a single month. Pilots flagged unknown objects in commercial airspace, air traffic controllers worked to assess the risk, and in most cases, the drones — and their operators — were never identified.</p>
+<p>This is not a hypothetical concern. As consumer and commercial drone adoption has accelerated, so too have encounters between unmanned aircraft systems (UAS) and manned aviation. These incidents range from distant sightings to dangerously close encounters that threaten aircraft safety — and they are concentrated in the nation’s busiest and most complex airspace.</p>
+<p>In this analysis, I examine <strong>6,551 UAS sighting reports</strong> filed with the FAA between September 2016 and August 2019 to understand when these encounters occur, how close they get, and where in the country the risk is highest.</p>
+<p><br></p>
+<p><img src="drone.jpg" class="img-fluid"></p>
+<p><br><br></p>
+</section>
+<section id="dataset-introduction" class="level1">
+<h1>Dataset Introduction</h1>
+<p>This analysis uses a research-ready dataset compiled by Wang &amp; Hubbard (2022) from the <a href="https://www.faa.gov/uas/resources/public_records/uas_sightings_report"><strong>FAA’s UAS Sighting Reports</strong></a>, published through the Purdue University Research Repository. The original FAA reports consist of brief narrative summaries describing each encounter. The Purdue dataset extracts structured variables from these narratives, supplemented with airport classification data from the National Plan for Integrated Airport Systems (NPIAS).</p>
+<p>The dataset includes <strong>6,551 observations</strong>, each representing a single reported UAS encounter. The primary variables used in this analysis are <strong>Date</strong> (constructed from separate month, day, and year fields), <strong>State</strong> and <strong>City</strong> (the reported location of the encounter), <strong>UAS Sighting</strong> (whether a sighting was confirmed), and <strong>Distance between Aircraft and UAS</strong> (the estimated separation in feet between the drone and the manned aircraft at the time of the encounter).</p>
+<p>A key challenge with this dataset is that the distance variable contains a mix of numeric values, descriptive entries (such as “Close”), and missing or non-standard entries. To make this variable analytically useful, I recoded these entries and constructed a <strong>Proximity</strong> classification: encounters with a reported distance of 1,000 feet or greater are labeled <strong>Distant Sightings</strong>, those between 1 and 1,000 feet are labeled <strong>Close Encounters</strong>, entries originally recorded as “N” — representing non-manned-aircraft sightings such as ground-based or radar reports — are categorized as <strong>Ground/Radar</strong>, and entries recorded as “N/A” — where no distance information was provided — are categorized as <strong>Other</strong> to preserve the full dataset rather than discard incomplete records. This wrangling step was necessary to transform an inconsistently formatted field into a usable categorical variable.</p>
+<p>For the spatial analysis, the dataset provides only city and state names — not geographic coordinates. To map individual sighting locations, I used the <strong><code>tidygeocoder</code></strong> package to convert city names into latitude and longitude values via the OpenStreetMap geocoding API, then filtered out any coordinates that fell outside the expected geographic boundaries.</p>
+<p>Finally, it is important to note that these reports are based on pilot and observer estimates rather than radar-verified measurements. The FAA acknowledges that many sightings cannot be independently confirmed. As such, this dataset captures what was <em>reported</em>, not necessarily what was <em>verified</em> — a distinction that matters when interpreting the results.</p>
+<p><br><br><br><br></p>
+</section>
+<section id="the-surge-uas-sightings-over-time" class="level1">
+<h1>The Surge: UAS Sightings Over Time</h1>
+<p>To establish the broader trend, I first examine the total number of confirmed UAS sightings reported each month across the full three-year period. A date variable is constructed from the separate month, day, and year fields using <code>make_date()</code>, then aggregated to the monthly level using <code>floor_date()</code>. A LOESS curve is overlaid to highlight the underlying trajectory [1].</p>
+<p><br></p>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<blockquote class="blockquote">
+<p>The time series reveals two distinct patterns. First, there is a <strong>gradual upward trend</strong> in monthly sightings across the period, captured by the LOESS curve. This is consistent with the rapid growth in consumer and commercial drone use during 2016-2019. Second, the data exhibit <strong>pronounced seasonality</strong>: sightings spike each summer and decline each winter. This likely reflects both increased drone activity during warmer months and improved visual detection conditions. The most dramatic peak occurs in the summer of 2018, when monthly sightings exceeded 300 — the highest concentration in the dataset.</p>
+</blockquote>
+<p><br><br><br><br></p>
+</section>
+<section id="close-calls-encounter-proximity-over-time" class="level1">
+<h1>Close Calls: Encounter Proximity Over Time</h1>
+<p>Not all drone encounters carry the same risk. A drone spotted at a distance is a concern; a drone within a few hundred feet of a commercial aircraft is a potential catastrophe. To distinguish between these scenarios, I classify each encounter by the reported distance between the UAS and the manned aircraft and examine how each category evolves over time.</p>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<blockquote class="blockquote">
+<p>The stacked area chart decomposes the overall sighting trend by encounter proximity. <strong>Close Encounters</strong> — those where the drone was reported within 1,000 feet of the aircraft — make up a substantial share of the total and follow the same seasonal pattern observed in the aggregate. <strong>Distant Sightings</strong> (1,000+ feet) contribute a smaller but consistent layer. A large proportion of reports fall into the <strong>Other</strong> and <strong>Ground/Radar</strong> categories — representing encounters where no distance was recorded or where no manned aircraft was involved, respectively. Rather than exclude these observations, they are retained to preserve the full scope of reported UAS activity. Their volume relative to the classified encounters is itself informative: it highlights how often the nature of a drone encounter cannot be meaningfully categorized from the available data.</p>
+</blockquote>
+<p><br><br><br><br></p>
+</section>
+<section id="where-it-happens-a-national-view" class="level1">
+<h1>Where It Happens: A National View</h1>
+<p>Drone encounters are not evenly distributed across the country. To visualize the geographic concentration of UAS sightings, I map total encounter frequency by state. State abbreviations in the dataset are matched to full state names using <code>state.name</code> and <code>state.abb</code>, converted to lowercase for joining with the <code>maps</code> package [4].</p>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<blockquote class="blockquote">
+<p>The choropleth reveals a sharp geographic concentration. <strong>California</strong> and <strong>Florida</strong> stand out as the two highest-frequency states, followed by <strong>New York</strong> and <strong>Texas</strong>. These are states that contain some of the busiest commercial airports in the country and the highest population densities — both of which increase the likelihood of drone encounters being reported. The concentration is not merely a population artifact: these states also contain complex, multi-layered airspace where the consequences of a drone incursion are most severe.</p>
+</blockquote>
+<p><br><br><br><br></p>
+</section>
+<section id="zooming-in-california-and-florida" class="level1">
+<h1>Zooming In: California and Florida</h1>
+<p>The national choropleth identifies <em>which</em> states are most affected, but it cannot reveal <em>where within those states</em> the encounters are concentrated. To answer this, I focus on California and Florida — the two highest-frequency states — and map individual sighting locations at the city level.</p>
+<p>Because the dataset provides city names but not geographic coordinates, I use the <code>tidygeocoder</code> package to look up the latitude and longitude of each unique city via the OpenStreetMap API. After geocoding, results are joined back to the full sighting data and filtered to remove any coordinates that fall outside the expected state boundaries — a necessary step since some city names are ambiguous or produce inaccurate matches. A smoothed density overlay highlights where sightings cluster most heavily [5], [6], [7], [8], [9].</p>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<blockquote class="blockquote">
+<p>The California density map reveals that sightings are not spread uniformly across the state but cluster tightly around major airport hubs. The highest concentrations appear in the <strong>Los Angeles basin</strong> and the <strong>San Francisco Bay Area</strong> — two of the most congested airspace regions in the country.</p>
+</blockquote>
+<p><br><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<blockquote class="blockquote">
+<p>In Florida, a similar pattern emerges. The densest activity centers on the <strong>Miami-Fort Lauderdale corridor</strong> and the <strong>Orlando-Tampa region</strong>, again corresponding to the state’s busiest commercial airspace. Together, these maps confirm that unauthorized drone encounters are not random: they concentrate precisely where the airspace is busiest and where the consequences of an incursion are most severe.</p>
+</blockquote>
+<p><br><br><br><br></p>
+</section>
+<section id="wrap-up-considerations-course-connection" class="level1">
+<h1>Wrap-Up, Considerations, &amp; Course Connection</h1>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Across temporal, categorical, and spatial analyses, a consistent picture emerges. Unauthorized drone encounters in U.S. airspace are <strong>growing over time</strong>, follow <strong>strong seasonal patterns</strong>, and are <strong>geographically concentrated</strong> around the nation’s busiest airports. Among encounters where proximity was reported, a substantial proportion occur within 1,000 feet of manned aircraft — and roughly half of all reports lack a distance estimate entirely, making it impossible to assess severity after the fact.</p>
+<p>These findings point to a fundamental limitation in how drone encounters are currently detected and documented. The FAA’s sighting reports capture only what pilots and observers happen to <em>see and report</em>. They cannot account for drones that go undetected, encounters that occur outside of visual range, or activity in airspace where no manned aircraft are present to observe. The true scope of unauthorized UAS activity is almost certainly larger than these data reflect — and the inability to consistently measure encounter severity suggests that current reporting mechanisms alone are insufficient for managing the risk.</p>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>Several limitations should be acknowledged. First, the dataset relies entirely on self-reported sightings rather than verified detections. Pilots estimate distance and altitude under time pressure, and these values are approximations at best. Second, approximately half of all records lack a reported distance between the aircraft and UAS, which limits the encounter severity analysis to a subset of the data. Third, the proximity thresholds used in this analysis are analytically constructed categories rather than formally defined safety boundaries. Fourth, geocoding city names introduces imprecision — multiple sightings within a city are mapped to the same coordinate point, and some city names may resolve to incorrect locations, requiring boundary-based filtering. Finally, the dataset covers September 2016 through August 2019 and does not reflect more recent trends, including the significant wave of unexplained drone sightings reported along the U.S. East Coast in late 2024.</p>
+</section>
+<section id="future-directions" class="level2">
+<h2 class="anchored" data-anchor-id="future-directions">Future Directions</h2>
+<p>With additional data or time, several extensions could strengthen this analysis. Incorporating the FAA’s quarterly sighting reports from 2020-2025 would extend the temporal trend and capture the post-pandemic period. Geocoding sightings across all states — not just California and Florida — would enable a complete national spatial analysis at the city level. Fitting a logistic regression model to predict evasive action from encounter characteristics could identify the factors that distinguish routine sightings from dangerous ones. And overlaying sighting locations with data on critical infrastructure — military installations, energy facilities, government buildings — could assess whether unauthorized drone activity clusters near sensitive sites.</p>
+</section>
+<section id="connecting-the-visualizations-to-course-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-the-visualizations-to-course-concepts">Connecting the Visualizations to Course Concepts</h2>
+<p>The visualizations in this analysis draw on several principles from our data visualization coursework.</p>
+<p>The <strong>temporal line plot</strong> uses a LOESS smoother to separate the long-term trends from month-to-month noise. The shaded area beneath the raw line provides a sense of magnitude, while the smooth curve makes the upward trend and seasonal cycle immediately legible. This reflects the principle that trend visualization should help the reader perceive patterns that raw data alone might obscure.</p>
+<p>The <strong>stacked area chart</strong> encodes two dimensions simultaneously — time on the x-axis and encounter composition through colored layers. This allows the reader to see both the total volume of sightings and the relative proportion of each proximity category at any point in time. The use of a <code>viridis</code> color scale ensures accessibility for readers with color vision deficiencies.</p>
+<p>The <strong>choropleth map</strong> applies spatial encoding to transform a table of state-level counts into an immediately interpretable geographic pattern. By using a continuous <code>viridis</code> color scale on an Albers equal-area projection, the map avoids the visual distortion that can arise from state size differences and ensures that color intensity — not polygon area — drives the reader’s interpretation.</p>
+<p>The <strong>state-level density maps</strong> demonstrate the value of <strong>multi-scale visualization</strong>. The national choropleth reveals <em>which</em> states are most affected; the California and Florida maps reveal <em>where within those states</em> the encounters concentrate. The density contours (<code>geom_density_2d_filled</code>) provide a smoothed spatial summary that is more informative than raw point clouds alone, particularly in areas with high sighting overlap. This layered approach — from national overview to local detail — exposes patterns that would be invisible at either scale alone.</p>
+<p><br><br><br><br></p>
+</section>
+</section>
+<section id="citations" class="level1">
+<h1>Citations</h1>
+<p>[1] Learning_R, “How do I group my date variable into month/year in R?,” <em>Stack Overflow</em>, Oct.&nbsp;19, 2015. https://stackoverflow.com/questions/33221425/how-do-i-group-my-date-variable-into-month-year-in-r</p>
+<p>[2] Z. Bobbitt, “How to Use scale_x_date to Format Dates in R,” <em>Statology</em>, Apr.&nbsp;01, 2024. https://www.statology.org/scale_x_date-in-r/</p>
+<p>[3] H. W. D. N. Pedersen and Thomas Lin, “17 Themes – ggplot2: Elegant Graphics for Data Analysis (3e).” https://ggplot2-book.org/themes.html</p>
+<p>[4] S. Senkeresty and S. Senkeresty, “Choropleth Maps in Power BI… with R,” <em>Tiny Lizard</em>, Jun.&nbsp;20, 2016. https://tinylizard.com/choropleth-maps-power-bi-r/</p>
+<p>[5] “Geocoding made easy.” https://jessecambon.github.io/tidygeocoder/</p>
+<p>[6] “Getting started.” https://cran.r-project.org/web/packages/tidygeocoder/vignettes/tidygeocoder.html</p>
+<p>[7] “Getting started.” https://cran.r-project.org/web/packages/tidygeocoder/vignettes/tidygeocoder.html</p>
+<p>[8] “Contours of a 2D density estimate — geom_density_2d.” https://ggplot2.tidyverse.org/reference/geom_density_2d.html</p>
+<p>[9] Anthropic, Claude AI, <a href="https://claude.ai" class="uri">https://claude.ai</a> (used for debugging assistance and code comprehension)</p>
+<p>[10] C. Wang and S. M. Hubbard, “Unmanned Aircraft Systems (UAS) Sighting Data 2016 to 2019,” <em>Purdue University Research Repository</em>, 2022. doi:10.4231/H31Y-7197</p>
+<p>[11] Federal Aviation Administration (FAA), “UAS Sighting Reports.” https://www.faa.gov/uas/resources/public_records/uas_sightings_report</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

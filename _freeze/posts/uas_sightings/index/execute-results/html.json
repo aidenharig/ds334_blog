@@ -1,0 +1,17 @@
+{
+  "hash": "1930f311d64b5aa175d7fdcc0ff8b3fd",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"UAS Encounters Across the United States\"\nauthor: \"Aiden W. Harig\"\ndate: \"2026-03-11\"\nexecute: \n  warning: false\n  echo: false\ncategories: [Defense Tech, Homeland Security]\ntoc: true\n---\n\n::: {.cell execute='false'}\n\n:::\n\n\n\n\n![](drone.jpg)\n\n# Section 1 -- The Surge (TEMPORAL TRENDS)\n\n\n\n::: {.cell}\n\n:::\n\n\n\n\n<br>\n\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-3-1.png){fig-align='center' width=960}\n:::\n:::\n\n\n\n\n<br>\n\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-4-1.png){fig-align='center' width=960}\n:::\n:::\n\n\n\n\n\n# Section 2 -- Where it's happening\n\n\n\n::: {.cell}\n\n:::\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-6-1.png){fig-align='center' width=864}\n:::\n:::\n\n\n\n\n<br>\n\n\n::: {.cell}\n\n:::\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-8-1.png){fig-align='center' width=672}\n:::\n:::\n\n\n\n\n<br>\n\n\n::: {.cell}\n\n:::\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-10-1.png){fig-align='center' width=672}\n:::\n:::\n\n\n\n\n\n# Citations (IEEE)\n\n1.  Learning_R, “How do I group my date variable into month/year in R?,” Stack Overflow, Oct. 19, 2015. https://stackoverflow.com/questions/33221425/how-do-i-group-my-date-variable-into-month-year-in-r\n\n2.  Z. Bobbitt, “How to Use scale_x_date to Format Dates in R,” Statology, Apr. 01, 2024. https://www.statology.org/scale_x_date-in-r/\n\n3. H. W. D. N. Pedersen and Thomas Lin, “17 Themes – ggplot2: Elegant Graphics for Data Analysis (3e).” https://ggplot2-book.org/themes.html\n\n4. ChatGPT: \"How can I change the state abbreviation into full state names within a df variable in R?\"\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
