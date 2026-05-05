@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/cyber/index.html",
       "/posts/UAS/index.html",
       "/posts/wellbeing/index.html",
       "/posts/defense_health_spending/index.html"

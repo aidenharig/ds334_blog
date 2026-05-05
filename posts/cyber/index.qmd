@@ -283,14 +283,14 @@ VCDB captures what gets reported, not what happens. The disclosure-regime catego
 
 # Citations
 
-\[1\] H. Wickham and G. Grolemund, "10 Tibbles," *R for Data Science*. https://r4ds.had.co.nz/tibbles.html
+[1] H. Wickham and G. Grolemund, "10 Tibbles," *R for Data Science*. https://r4ds.had.co.nz/tibbles.html
 
-\[2\] Z. Bobbitt, "How to Use str_trim in R (With Examples)," *Statology*, Jul. 14, 2022. https://www.statology.org/str_trim-in-r/
+[2] Z. Bobbitt, "How to Use str_trim in R (With Examples)," *Statology*, Jul. 14, 2022. https://www.statology.org/str_trim-in-r/
 
-\[3\] Z. Bobbitt, "How to Use the replace_na Function in R," *Statology*, Apr. 25, 2024. https://www.statology.org/r-replace_na/
+[3] Z. Bobbitt, "How to Use the replace_na Function in R," *Statology*, Apr. 25, 2024. https://www.statology.org/r-replace_na/
 
-\[4\] C. Scherer, "A Quick How-to on Labelling Bar Graphs in ggplot2," Jul. 05, 2021. https://www.cedricscherer.com/2021/07/05/a-quick-how-to-on-labelling-bar-graphs-in-ggplot2/
+[4] C. Scherer, "A Quick How-to on Labelling Bar Graphs in ggplot2," Jul. 05, 2021. https://www.cedricscherer.com/2021/07/05/a-quick-how-to-on-labelling-bar-graphs-in-ggplot2/
 
-\[5\] "Y-axis scale as percent in ggplot," *Stack Overflow*, Aug. 12, 2022. https://stackoverflow.com/questions/73330919/y-axis-scale-as-percent-in-ggplot
+[5] "Y-axis scale as percent in ggplot," *Stack Overflow*, Aug. 12, 2022. https://stackoverflow.com/questions/73330919/y-axis-scale-as-percent-in-ggplot
 
-\[6\] C. O. Wilke, "Coordinate systems and axes," DSC 385. https://wilkelab.org/DSC385/worksheets/coordinate-systems-axes.html
+[6] C. O. Wilke, "Coordinate systems and axes," DSC 385. https://wilkelab.org/DSC385/worksheets/coordinate-systems-axes.html
